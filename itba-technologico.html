@@ -424,7 +424,7 @@ async function pay(){
   btn.textContent='Procesando...';btn.disabled=true;
   const items=Object.values(cart).map(i=>({nombre:i.name,precio:i.price,cantidad:i.qty}));
   try{
-    const res=await fetch('http://pi.wakeberry.com.ar/crear-pago',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})});
+    const res=await fetch('https://pi.wakeberry.com.ar/crear-pago',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})});
     const data=await res.json();
     if(data.url)window.location.href=data.url;else throw new Error();
   }catch(e){alert('Error al conectar. Intentá de nuevo.');btn.textContent='Pagar con Mercado Pago';btn.disabled=false;}
